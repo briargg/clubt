@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ClubAlmacén - Autenticación</title>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ff4d4d, #ffffff);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #b30000;
+        }
+
+        input, button, select {
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #b30000;
+            color: white;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #ff1a1a;
+        }
+
+        #statusMessage {
+            color: green;
+            font-weight: bold;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo img {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">
+      <img src="logo club almacen blanco sin fondo.png" alt="Logo ClubAlmacén" />
+    </div>
+
+    <div class="container" id="authContainer">
+        <h1>Acceder o Registrarse</h1>
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Contraseña" required />
+        <button id="signupButton">Registrarse</button>
+        <button id="loginButton">Iniciar Sesión</button>
+        <p id="statusMessage"></p>
+    </div>
+
+    <div class="container" id="userDetails" style="display:none;">
+        <h2>Selecciona tu Rol</h2>
+        <button id="clienteButton">Cliente</button>
+        <button id="comercianteButton">Comerciante</button>
+        <button id="logoutButton">Cerrar Sesión</button>
+    </div>
+    <!-- Añadir antes de los inputs -->
+<div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
+    <button onclick="toggleAuthMode('login')" style="width: 45%;">Iniciar Sesión</button>
+    <button onclick="toggleAuthMode('signup')" style="width: 45%;">Registrarse</button>
+  </div>
+  
+
+    <div class="container" id="clienteDetails" style="display:none;">
+        <h2>Bienvenido Cliente</h2>
+        <button id="addPurchaseButton">Agregar Compra</button>
+        <button id="payButton">Pagar</button>
+        <p id="purchaseDetails">Compras realizadas: 0</p>
+        <button id="logoutButtonCliente">Cerrar Sesión</button>
+    </div>
+
+    <div class="container" id="comercianteDetails" style="display:none;">
+        <h2>Bienvenido Comerciante</h2>
+        <button id="addPurchaseComercianteButton">Agregar Compra</button>
+        <p id="comercianteDetailsText">Ventas realizadas: 0</p>
+        <button id="logoutButtonComerciante">Cerrar Sesión</button>
+    </div>
+
+    <div class="container" id="fiadoContainer" style="display:none;">
+        <h3>Habilitar Fiado</h3>
+        <select id="clienteSelect">
+            <option value="">Seleccionar Cliente</option>
+        </select>
+        <input type="number" id="montoFiado" placeholder="Monto a fiar" />
+        <button id="habilitarFiadoButton">Habilitar Fiado</button>
+    </div>
+    
+
+    <script src="app.js"></script>
+</body>
+</html>
