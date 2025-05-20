@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cliente - ClubAlmacén</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ff4d4d, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    h2 {
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 8px;
+      background-color: #b30000;
+      color: white;
+      font-weight: bold;
+      border: none;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1a1a;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #b30000;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">ClubAlmacén</div>
+
+  <div class="container">
+    <h2>Bienvenido Cliente</h2>
+    <button id="addPurchaseButton">Agregar Compra</button>
+    <button id="payButton">Pagar</button>
+    <p id="purchaseDetails">Compras realizadas: 0</p>
+    <button id="logoutButton">Cerrar Sesión</button>
+  </div>
+
+  <script>
+    document.getElementById('logoutButton').addEventListener('click', () => {
+      // Firebase signOut
+      firebase.auth().signOut().then(() => {
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <script>
+    // Configura Firebase si es necesario aquí
+  </script>
+</body>
+</html>

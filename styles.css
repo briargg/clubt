@@ -1,0 +1,117 @@
+/* Variables de colores */
+:root {
+    --coca-red: #ff0000;
+    --coca-black: #000000;
+    --coca-white: #ffffff;
+    --coca-gray: #f5f5f5;
+}
+
+/* Estilo general */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--coca-gray);
+    color: var(--coca-black);
+    line-height: 1.6;
+}
+
+/* Estilo del header */
+h1 {
+    text-align: center;
+    color: var(--coca-red);
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Contenedor principal */
+div {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: var(--coca-white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--coca-white);
+    background-color: var(--coca-red);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--coca-black);
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: var(--coca-red);
+}
+
+/* Inputs */
+input, select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--coca-black);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--coca-red);
+}
+
+/* Botón principal */
+#addUserButton, #getUsersButton {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Títulos secundarios */
+h2 {
+    color: var(--coca-black);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--coca-red);
+    display: inline-block;
+}
+
+/* Estilo de tarjetas (opcional para usuarios) */
+.card {
+    background-color: var(--coca-white);
+    border: 1px solid var(--coca-black);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    div {
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
